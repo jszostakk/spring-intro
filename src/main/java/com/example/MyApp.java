@@ -1,15 +1,19 @@
 package com.example;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class MyApp {
 
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        //ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(MyNameMessageService.class);
 
-        MessageService messageService = applicationContext.getBean("messageService", MessageService.class);
-        MessageService messageService1 = applicationContext.getBean("messageService1", MessageService.class);
-        MessageService messageService2 = applicationContext.getBean("messageService1", MessageService.class);
+
+        MessageService messageService = applicationContext.getBean(MessageService.class);
+        MessageService messageService1 = applicationContext.getBean(MessageService.class);
+        MessageService messageService2 = applicationContext.getBean(MessageService.class);
 
         System.out.println(messageService.getMessage());
         System.out.println(messageService.hashCode());
@@ -24,6 +28,6 @@ public class MyApp {
 
 
 
-        applicationContext.close();
+        //applicationContext.close();
     }
 }
