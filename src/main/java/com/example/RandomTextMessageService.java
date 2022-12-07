@@ -9,7 +9,7 @@ public class RandomTextMessageService implements MessageService{
     @Override
     public String getMessage() {
         Random rand = new Random();
-        int n = rand.nextInt();
+        int n = rand.nextInt(10);
         return messages[n];
     }
 }
